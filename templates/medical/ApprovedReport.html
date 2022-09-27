@@ -1,0 +1,129 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <title>Document</title>
+    <style>
+       *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+            /* color: #fff; */
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background: linear-gradient(to right top, #141E30, #243B55); */
+        }
+        .head h1, h3{
+            margin-top: 19px;
+        }
+        .head h4{
+            margin-top: 43px;
+            text-align: center;
+        }
+        .main-card{
+            width: 80%;
+            min-height: 100vh;
+
+            padding-top:23px ;
+            /* padding-left: 23px; */
+            /* padding-right: 23px;            */
+        }
+        table{
+            width: 100%;
+            padding: 10px;
+        }
+
+        table th{
+            padding-top: 7px;
+            padding-bottom: 7px;
+            font-weight: bold;
+        }
+
+        table td{
+            /* text-align: center !important; */
+            padding-top: 7px;
+            padding-bottom: 7px;
+
+        }
+        table, th, td {
+            border-bottom: 1px solid #dddddd;
+            /* border: 0.6px solid rgb(172, 172, 172); */
+            border-collapse: collapse;
+            padding-left: 6px;
+            text-align: center;
+            /* background-color: rgb(240,240,240) */
+        }
+        table, th{
+            border-top: 1px solid #dddddd;
+        }
+        .head .title{
+            margin-top: 43px;
+            margin-left: 230px;
+            
+        } 
+
+        .signature{
+            list-style-type: none;
+
+        }
+        .signature li{
+            margin-top: 23px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-card">
+        <div class="head">
+            <div class="image">
+                <img src="staticfiles/images/healthcare.gif" width="170px" >
+                </div>
+            <h1>Republic Of Rwanda</h1>
+            <h2>{{user}}</h2>
+            <h2 class="email">Email:{{email}}</h2>
+            <h2 class="date">Date Printed: {{date}}</h2>
+            <h2 class="address">{{address}}, Rwanda</h2> 
+            <h1 class="title">{{title}}</h1>
+        </div>
+        <div class="table_section">
+            <table class="w3-table-all">
+                <thead>
+                    <tr class="w3-light-grey">
+                        <th>ID</th>
+                        <th>Medicine</th>
+                        <th>HealthCare Requesting </th>
+                        <th>HealthCare Approving </th>
+                        <th>Quantity</th>
+                        <th>Return date</th>
+						<th>status</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+					{% for approve in approves %}
+					<tr>
+						<td>{{ approve.id }}</td>
+                        <td>{{ approve.medicine }}</td>
+					    <td>{{ approve.hospital_requested}}</td>
+                        <td>{{ approve.hospital_approved}}</td>
+					    <td>{{ approve.quantity}}</td>
+					    <td>{{ approve.return_date}}</td>
+						<td>{{ approve.status}}</td>
+						</tr>
+					  {% endfor %}
+                </tbody>
+            </table>
+           
+        </div>
+
+    </div>
+</body>
+</html>

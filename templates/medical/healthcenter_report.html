@@ -1,0 +1,644 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- dashboard -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard </title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="{% static 'dash/css/styles.css' %}" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<style>
+ body{
+ background-color: #efefef;
+     }
+.navbar-nav{
+  margin-left: 770px;
+     }
+</style>
+<style media="screen">
+  .submit-button{
+    width: 240px;
+    margin-left: 15px;
+    margin-top: 12px;
+  }
+  .my-card{
+    border:grey solid 0.3px;
+  }
+  .my-card ul{
+    list-style: none;
+    padding-left: 0px;
+  }
+  .my-card li{
+    margin-bottom: 10px;
+  }
+  .form-div{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+  }
+  .form-div input{
+    width: 200px;
+    margin-right: 12px;
+    margin-bottom: 32px;
+  }
+  .form-div h3{
+    text-align: left !important;
+    background-color: red !important;
+  }
+  .stars{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .checked {
+      color: orange;
+    }
+  .jumbotron {
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .jumbotron h1 {
+    text-align: center;
+  }
+
+  .alert {
+    margin: 0px;
+  }
+
+
+
+  .glow {
+    font-size: 70px;
+    color: #ffffff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
+    }
+
+    to {
+      text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
+</style>
+
+<style type="text/css">
+  .bs-example {
+    margin: 0px;
+
+  }
+
+  .navbar-brand {
+    font-size: 20px;
+    font-family: sans-serif;
+
+  }
+</style>
+
+<style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    margin-top:15px;
+  }
+
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  button:hover,
+  a:hover {
+    opacity: 0.7;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+
+  a {
+    color: black;
+  }
+
+  nav, a{
+  color: #fff;
+  }
+  #dropdownMenuButton {
+   background-color: #0298cf;
+   width:150px;
+   border-radius: 6px;
+  }
+  .btn-primary{
+    outline:none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color:white;
+    background-color: #0298cf;
+    width: 100px;
+  }
+  .thead-darks{
+    background: #0298cf;
+    color: white;
+   
+}
+.title{
+ color: gray;
+ padding-right: 250px;
+}
+/* .linkprint a{
+  text-decoration: none;
+  color:white;
+  text-align: center;
+} */
+
+/* #print-pdf-btn{
+  color: #000;
+} */
+
+</style>
+
+<style>
+  /*---------------------------------------
+ Social section
+-----------------------------------------*/
+  /* footer {
+    padding: 0px 0px 0px 0px;
+    background-color: black;
+    margin: 0px;
+  }
+
+  .fa {
+    padding: 20px;
+    font-size: 23px;
+    width: 60px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+
+  .fa:hover {
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+    margin-top: 30px;
+  }
+
+  .fa-whatsapp {
+    background: #25d366;
+    color: white;
+  }
+.fa-youtube {
+    background: red;
+    color: blue;
+  }
+
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  } */
+
+  p {
+    text-align: center;
+
+  }
+</style>
+</head>
+<body class="sb-nav-fixed">
+
+  
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      <!-- Navbar Brand-->
+      <a class="navbar-brand ps-3" href="#">Dashboard</a>
+      <!-- Sidebar Toggle-->
+      <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+     
+      <div class="navbar-nav">
+          {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'dash' %}" class="nav-item nav-link">
+              Welcome <span style="color: rgb(246, 250, 246)">{{ user.username }}</span> 
+            </a>   
+          </li>
+          {% else %}
+          <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
+          {% endif %}
+        
+     
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">   
+                  <li><a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">
+                      Logout</a>
+                      <form action="{% url 'logout' %}" method="POST" id="logout">
+                          {% csrf_token %}
+                          <input type="hidden" />
+                        </form> 
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+  </nav>
+  <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+          <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+              <div class="sb-sidenav-menu">
+                  <div class="nav">
+                      <div class="sb-sidenav-menu-heading">Start</div>
+                      <a class="nav-link" href="{% url 'main' %}">
+                          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                          Dashboard
+                      </a>
+                     
+                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Record Medicine
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{% url 'record_medicine' %}">New medicine</a>
+                            <a class="nav-link" href="{% url 'temp' %}">List of Medicines</a>
+
+                        </nav>
+                    </div>
+                   
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        Requests
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    
+                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <a class="nav-link" href="{% url 'list_medicines' %}">
+                                <div ><i ></i></div>
+                                send request
+                            </a>
+                            
+                            <a class="nav-link" href="{% url 'list_requests' %}">
+                                <div ><i ></i></div>
+                                view request
+                            </a>
+                            <a class="nav-link" href="{% url 'list_responses' %}">
+                                <div ><i ></i></div>
+                                view response
+                            </a>
+
+                            <a class="nav-link" href="{% url 'list_approved' %}">
+                                <div ><i ></i></div>
+                                view Approved
+                            </a>  
+                        </nav>
+                    </div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Returns
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{% url 'returned' %}">
+                                <div ><i ></i></div>
+                            Return Medicine 
+                            </a>
+                            <a class="nav-link" href="{% url 'list_returned' %}">
+                                <div ><i ></i></div>
+                              List of returned 
+                            </a>
+                        </nav>
+                   
+                    </div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                        Reports
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{% url 'response_report' case='TODAY' %}">
+                                <div class="sb-nav-link-icon"><i></i></div>
+                                 ResponseReport
+                            </a>
+                            <a class="nav-link" href="{% url 'approvedd_report' case='TODAY' %}">
+                                <div class="sb-nav-link-icon"><i></i></div>
+                                 ApproveReport
+                            </a>
+                        </nav>
+                    </div>
+
+                   
+                    <a class="nav-link" href="{% url 'mails' %}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        send emails
+                    </a>
+                    <a class="nav-link" href="{% url 'directors'  %}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                         List of Directors
+                    </a>
+                         
+
+                  </div>
+              </div>
+             
+          </nav>
+      </div>
+<div id="layoutSidenav_content">
+  <main>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-ms-12 col-md-3">
+                <ul style="list-style:none; padding:0;">
+                    <!-- <li style="font-size:25px;">Health Center: {{response }}</li> -->
+                    <br>
+                    <li>DATE PRINTED: {{date}}</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="content">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+
+    {% endif %}
+    <h5 class="title" style="text-align: center;">{{title}}</h5>
+    <div class="row">
+      <div class="col">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            FILTER THE LIST
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{% url 'response_report' case='TODAY' %}">TODAY</a>
+            <a class="dropdown-item" href="{% url 'response_report' case='THIS_MONTH' %}">THIS MONTH</a>
+            <a class="dropdown-item" href="{% url 'response_report' case='THIS_YEAR' %}">THIS YEAR</a>
+            <a href="#" class="dropdown-item"  id="show_date_range">BY DATE RANGE</a>
+          </div>
+        </div>
+
+
+      </div>
+      <div id="off_set" class="col"></div>
+      <div class="col">
+
+        <form hidden id="date_range_form" action="{% url 'response_report' case='BY_DATE_RANGE' %}" method="get" >
+          <div class="row">
+         
+            <div class="col">
+              <input type="date" placeholder="Search by Date " name="date_start" class="form-control">
+            </div>
+            <div class="col">
+              <input type="date" placeholder="Search by Date " name="date_end" class="form-control">
+            </div>
+            <div class="col">
+                <button class="btn btn-primary">
+                    Search
+                </button>
+            </div>
+          </div>
+        </form>
+
+        <form id="date_form" action="{% url 'response_report' case='BY_DATE' %}" method="get" >
+          <div class="row">
+            <div class="col">
+              <input type="date" placeholder="Search by Date " name="date" class="form-control">
+            </div>
+            <div class="col">
+                <button class="btn btn-primary">
+                    Search
+                </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+<br>
+        <div class="row">
+        <table class="table table-striped table-bordered table-sm table-borderless" id="invoice">
+            <thead class="thead-darks">
+                <tr>
+                    <th>Medicine</th>
+                    <th> Health center </th>
+                    <th> Quantity </th>
+                    <th> Return date </th>
+                    <th> status </th>
+                    <th> Created_at </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for response in responses %}
+                    
+                    <tr>
+                   
+                    <td>{{ response.medicine }}</td>
+                    <td>{{ response.hospital_requested}}</td>
+                    <td>{{ response.quantity}}</td>
+                    <td>{{ response.return_date}}</td>
+                   <td>{{ response.status}}</td>
+                   <td>{{ response.created_at}}</td>
+
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+           
+            </table>
+          
+
+            </div>
+            <div class="row">
+                <div class="col-ms-12 col-md-3">
+                </div>
+                 <div class="col-ms-12 col-md-6">
+                </div>
+                 <div class="col-ms-12 col-md-3">
+                     
+                  
+                    <span>
+                      {% if of == 'TODAY' %}
+                         <a  href="{% url 'print_pdf_for_all'  case='TODAY' %}" class="btn btn-primary" target="_blank">Print </a>
+                      {% elif of == 'THIS_MONTH' %}
+                        <a  href="{% url 'print_pdf_for_all' case='THIS_MONTH' %}" class="btn btn-primary" target="_blank">Print </a>
+                      {% elif of == 'THIS_YEAR' %}
+                        <a href="{% url 'print_pdf_for_all'  case='THIS_YEAR' %}" class="btn btn-primary" target="_blank">Print</a>
+                   
+                      {% elif of == 'BY_DATE' %}
+                      <form action="{% url 'print_pdf_for_all' case='BY_DATE' %}" method="get" >
+                        <div class="row">
+                          <div class="col">
+                            <input id="hiden-date" hidden type="date" value="{{real_date}}" placeholder="Search by Date " name="date" class="form-control">
+                          </div>
+                          <div class="col">
+                              <button type="button"  id="print-pdf-btn" class="btn btn-primary" >
+                                  Print
+                              </button>
+                          </div>
+                        </div>
+                      </form>
+
+                      {% elif of == 'BY_DATE_RANGE' %}
+                      <form action="{% url 'print_pdf_for_all' case='BY_DATE_RANGE' %}" method="get" >
+                        <div class="row">
+                          <div class="col">
+                            <input id="hiden-date_start" hidden type="date" value="{{start_date}}" name="date_start" class="form-control">
+                            <input id="hiden-date_end" hidden type="date" value="{{end_date}}" name="date_end" class="form-control">
+                          </div>
+                          <div class="col">
+                              <button type="button"  id="print-pdf-btn-2" class="btn btn-primary">
+                                  Print
+                              </button>
+                              
+                          </div>
+                        </div>
+                      </form>
+                      {% endif %}
+                      </span>
+                </div>
+            </div>
+            <div>
+
+            </div>
+    </div>
+    </div>
+
+
+<script >
+const button = document.getElementById('print-pdf-btn')
+const dateField = document.getElementById('hiden-date')
+button.addEventListener('click',()=>{
+
+  dateField.value = '{{date}}'
+
+  console.log(dateField.value)
+  button.type = "submit"
+})
+    </script>
+
+
+
+<script>
+  const selector  = document.querySelector('#show_date_range');
+  const date_range_form = document.querySelector('#date_range_form');
+  const date_form = document.querySelector('#date_form');
+  const off_set = document.querySelector('#off_set');
+  const button_2 = document.getElementById('print-pdf-btn-2')
+  const start_date = document.getElementById('hiden-date_start')
+  const end_date = document.getElementById('hiden-date_end')
+
+
+  selector.addEventListener('click', ()=>{
+    if(selector.textContent === 'BY DATE RANGE'){
+        selector.textContent = 'BY DATE';
+        date_form.hidden = true;
+        date_range_form.hidden = false;
+        off_set.hidden = true;
+    }else{
+        selector.textContent = 'BY DATE RANGE';
+        date_form.hidden = false;
+        date_range_form.hidden = true;
+        off_set.hidden = false;
+    }
+  })
+
+  button_2.addEventListener('click', ()=>{
+        start_date.value = '{{start_date}}'
+        end_date.value = '{{end_date}}'
+        button_2.type = "submit"
+  })
+ </script>
+
+</main> 
+
+<footer class="py-4 bg-light mt-auto">
+  <div class="container-fluid px-4">
+    <div class="d-flex align-items-center justify-content-between small">
+      <div class="text-muted">Copyright &copy; Final Project 2022</div>
+      <div>
+        <a href="#">Privacy Policy</a>
+        &middot;
+        <a href="#">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'dash/js/scripts.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'dash/assets/demo/chart-area-demo.js' %}"></script>
+<script src="{% static 'dash/assets/demo/chart-bar-demo.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="{% static 'dash/js/datatables-simple-demo.js' %}"></script>
+</body>
+</html>
+
+
